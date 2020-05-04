@@ -4,7 +4,7 @@ model = Ner("out_base/")
 
 output = model.predict(input(">> "))
 
-k = 2
+k = 0
 for i, o in enumerate(output):
     if o["tag"] == "O":
         k -= 1
