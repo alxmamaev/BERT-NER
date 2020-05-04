@@ -4,13 +4,17 @@ model = Ner("out_base/")
 
 output = model.predict(input(">> "))
 
-prev_indx = 0
+new_tag = True
 for i, o in enumerate(output):
     if o["tag"] == "O":
+        new_tag = True
         continue
 
-    if prev_indx - i > 1:
-        print("SKILL:" )
+    if new_tag:
+        print("SKILL: " )
+        new_tag = False
 
     print(o["word"], end=" ")
     prev_indx = i
+
+print()
